@@ -44,7 +44,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // Getting screen width for dynamic sizing
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -92,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                   itemCount: imageList.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      width: screenWidth * 0.25, // Adjust width dynamically
+                      width: screenWidth * 0.25,
                       margin: const EdgeInsets.symmetric(horizontal: 5),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
@@ -112,7 +111,6 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 15),
               Container(
                 width: screenWidth * 0.95,
-                // Adjust container width dynamically
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: mainColor,
