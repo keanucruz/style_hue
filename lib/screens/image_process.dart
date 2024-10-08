@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:image_picker/image_picker.dart';
+import 'package:scanning_effect/scanning_effect.dart';
 import 'package:skintone_remake/screens/results_screen.dart';
 import 'home_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:scanning_effect/scanner_animation.dart';
 
 class ImageProcess extends StatefulWidget {
   final XFile image;
@@ -28,6 +30,7 @@ class _ImageProcessState extends State<ImageProcess> {
   String? _seasonCategory;
   Map<String, String>? _colorPalette;
   final picker = ImagePicker();
+  bool _isScanning = false;
 
 
   Future<void> _uploadImage() async {
@@ -108,20 +111,53 @@ class _ImageProcessState extends State<ImageProcess> {
                 width: 400,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
-                  color: mainColor
+                  color: mainColor,
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
-                  child: Image.file(
-                      File(widget.image.path),
-                    fit: BoxFit.fill,
-                  )
+                child: Stack(
+                  children: [
+                    Center(
+                      child: Container(
+                        height: 600,
+                        width: 400,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: mainColor,
+                        ),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.file(
+                              File(widget.image.path),
+                              fit: BoxFit.fill,
+                            )
+                        ),
+                      ),
+                    ),
+                    if(_isScanning)
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(25),
+                          child: ScanningEffect(
+                            scanningColor: secondaryColor,
+                            borderLineColor: Colors.white,
+                            delay: const Duration(seconds: 1),
+                            duration: const Duration(seconds: 2),
+                            child: Image.file(
+                              File(widget.image.path),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                  ],
                 ),
               ),
             ),
+
             const SizedBox(height: 40,),
             GestureDetector(
               onTap: () async {
+                setState(() {
+                  _isScanning = true;
+                });
+                await Future.delayed(const Duration(seconds: 3));
                 await _uploadImage();
                 if(_skinTone != null && _accuracy != null && _dominantColors != null && _seasonCategory != null && _colorPalette != null){
                   Navigator.push(
@@ -131,7 +167,9 @@ class _ImageProcessState extends State<ImageProcess> {
                           accuracy: _accuracy,
                           dominantColors: _dominantColors,
                           seasonCategory: _seasonCategory,
-                          colorPalette: _colorPalette)
+                          colorPalette: _colorPalette,
+                          pickedImage: File(widget.image.path),
+                      )
                   ));
                 }
               },
@@ -140,7 +178,7 @@ class _ImageProcessState extends State<ImageProcess> {
                 height: 40,
                 decoration: BoxDecoration(
                     color: Colors.black87,
-                    borderRadius: BorderRadius.circular(25)
+                    borderRadius: BorderRadius.circular(25),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

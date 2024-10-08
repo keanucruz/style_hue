@@ -86,29 +86,6 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              SizedBox(
-                height: 130,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: imageList.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: 120,
-                      margin: const EdgeInsets.symmetric(horizontal: 3),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(16)
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.file(File(imageList[index].path),
-                          fit: BoxFit.cover,),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 15,),
               Container(
                 height: 256,
                 decoration: BoxDecoration(
@@ -226,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: Image.asset('lib/assets/images/reco.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('lib/assets/images/rec1.png', fit: BoxFit.fill,),
                     ),
                   ),
                   const SizedBox(width: 15,),
@@ -239,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: Image.asset('lib/assets/images/reco.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('lib/assets/images/rec2.png', fit: BoxFit.fill,),
                     ),
                   ),
                   const SizedBox(width: 15,),
@@ -252,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: Image.asset('lib/assets/images/reco.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('lib/assets/images/rec3.png', fit: BoxFit.fill,),
                     ),
                   ),
                 ],
@@ -280,7 +257,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: Image.asset('lib/assets/images/reco.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('lib/assets/images/unreco1.jpg', fit: BoxFit.fill,),
                     ),
                   ),
                   const SizedBox(width: 15,),
@@ -293,7 +270,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: Image.asset('lib/assets/images/reco.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('lib/assets/images/unreco3.png', fit: BoxFit.fill,),
                     ),
                   ),
                   const SizedBox(width: 15,),
@@ -306,7 +283,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: Image.asset('lib/assets/images/reco.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('lib/assets/images/unreco2.png', fit: BoxFit.fill,),
                     ),
                   ),
                 ],
@@ -389,6 +366,29 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                ),
+              ),
+              const SizedBox(height: 20,),
+              SizedBox(
+                height: 130,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: imageList.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 120,
+                      margin: const EdgeInsets.symmetric(horizontal: 3),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(16)
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.file(File(imageList[index].path),
+                          fit: BoxFit.cover,),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
