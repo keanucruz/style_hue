@@ -351,7 +351,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.camera_alt,
+                          Icons.photo,
                           color: Colors.grey,
                         ),
                         const SizedBox(width: 10,),

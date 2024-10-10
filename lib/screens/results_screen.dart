@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:skintone_remake/screens/home_page.dart';
+import 'package:skintone_remake/screens/products_page.dart';
 
 class ResultsScreen extends StatelessWidget {
   final String? skinTone;
@@ -237,21 +238,38 @@ class ResultsScreen extends StatelessWidget {
                             ),
                           ],
                         ],
-                        Center(
-                          child: TextButton(
-                              onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const HomePage()));
-                              },
-                              child: Text(
-                                'Reselect Image',
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w600
-                                ),
-                              )
-                          ),
-                        )
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                                onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const HomePage()));
+                                },
+                                child: Text(
+                                  'Reselect Image',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600
+                                  ),
+                                )
+                            ),
+                            TextButton(
+                                onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ProductsPage(season: seasonCategory!)));
+                                },
+                                child: Text(
+                                  'See products',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600
+                                  ),
+                                )
+                            ),
+                          ],
+                        ),
+
                       ],
                     ),
                   )
