@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skintone_remake/screens/home_page.dart';
 import 'package:skintone_remake/screens/image_process.dart';
 
-void main(){
+void main() {
   runApp(const MyApp());
 }
 
